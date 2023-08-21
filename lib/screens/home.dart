@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
+import 'package:waliyalift/components/phoneno_input_field.dart';
 import 'package:waliyalift/components/text.dart';
+import 'package:waliyalift/components/text_field.dart';
+import 'package:waliyalift/screens/location.dart';
 import 'package:waliyalift/utils/color.dart';
 
 class Home extends StatefulWidget {
@@ -13,15 +16,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String borderColor = "#000000", borderColor2 = "#000000";
+  String user = "", phoneNumber = "";
+  TextEditingController text = TextEditingController(), pnoText = TextEditingController();
 
   void tap(int index) {
     if (index == 1) {
       setState(() {
+        user = "me";
         borderColor = "#165214";
         borderColor2 = "#000000";
       });
     }else {
       setState(() {
+        user = "other";
         borderColor2 = "#165214";
         borderColor = "#000000";
       });
@@ -99,7 +106,53 @@ class _HomeState extends State<Home> {
           height: 40, 
           borderRadius: 5,
           bgcolor: "#165214",
-          onPressed: () => {}
+          onPressed: () => {
+            if(user == "me") {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Location(),
+              ))
+            }else if(user == "other") {
+              if(phoneNumber == "") {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text("Contact Information"),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          MyPhoneNumberInputField(
+                            textEditingController: pnoText, 
+                            onInputChanged: (pno) => {
+                              setState((){
+                                phoneNumber = pno.phoneNumber!;
+                              })
+                            }
+                          )
+                        ],
+                    ),
+                    );
+                  }
+                )
+              }else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Location(),
+                ))
+              }
+            }else {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const AlertDialog(
+                    title: Text("Error", style: TextStyle(color: Colors.red),),
+                    content: Text("Please select valid choice!!"),
+                  );
+                }
+              )
+            }
+          }
         )
       ],),
     );

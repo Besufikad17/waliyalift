@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waliyalift/utils/color.dart';
 
+// ignore: must_be_immutable
 class MyCard extends StatelessWidget {
   MyCard({
     super.key, 
