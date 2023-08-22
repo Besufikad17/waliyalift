@@ -3,7 +3,6 @@ import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
 import 'package:waliyalift/components/phoneno_input_field.dart';
 import 'package:waliyalift/components/text.dart';
-import 'package:waliyalift/components/text_field.dart';
 import 'package:waliyalift/screens/location.dart';
 import 'package:waliyalift/utils/color.dart';
 
@@ -138,8 +137,8 @@ class _HomeState extends State<Home> {
               }else {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Location(),
-                ))
+                  MaterialPageRoute(builder: (context){ return const Location(); })
+                )
               }
             }else {
               showDialog(
