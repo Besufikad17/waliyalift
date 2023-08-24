@@ -33,10 +33,9 @@ class LocationPicker extends HookConsumerWidget {
         title: MyText(
             text: "$flag location",
             size: 12,
-            bgcolor: colorToHexString(Theme.of(context).colorScheme.primary),
-            fgcolor: "#ffffff",
+            color: "#ffffff",
             isBold: true,
-            borderRadius: 0),
+        ),
         centerTitle: true,
       ),
       body: Column(

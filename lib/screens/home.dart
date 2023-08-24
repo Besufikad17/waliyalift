@@ -60,8 +60,7 @@ class _HomeState extends State<Home> {
                  child: MyText(
                   text: "For me",
                   size: 12,
-                  bgcolor: "#ffffff",
-                  borderRadius: 0),
+                 ),
                ),
               const SizedBox(
                 width: 150,
@@ -89,8 +88,7 @@ class _HomeState extends State<Home> {
                  child: MyText(
                   text: "For others",
                   size: 12,
-                  bgcolor: "#ffffff",
-                  borderRadius: 0),
+                 ),
                ),
               const SizedBox(
                 width: 133,

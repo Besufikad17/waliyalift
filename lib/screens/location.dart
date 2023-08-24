@@ -48,10 +48,9 @@ class _LocationState extends State<Location> {
         title: MyText(
             text: "Pick Location",
             size: 12,
-            bgcolor: colorToHexString(Theme.of(context).colorScheme.primary),
-            fgcolor: "#ffffff",
+            color: "#ffffff",
             isBold: true,
-            borderRadius: 0),
+        ),
         centerTitle: true,
       ),
       body: Center(
@@ -90,8 +89,7 @@ class _LocationState extends State<Location> {
                   child: MyText(
                       text: pickLocation,
                       size: 12,
-                      bgcolor: "#ffffff",
-                      borderRadius: 0),
+                  ),
                 ),
                 const SizedBox(
                   width: 115,
@@ -130,8 +128,7 @@ class _LocationState extends State<Location> {
                   child: MyText(
                       text: dropLocation,
                       size: 12,
-                      bgcolor: "#ffffff",
-                      borderRadius: 0),
+                    ),
                 ),
                 const SizedBox(
                   width: 113,

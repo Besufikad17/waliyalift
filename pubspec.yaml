@@ -19,6 +19,7 @@ dependencies:
   flutter_hooks: ^0.20.0
   hooks_riverpod: ^2.3.8
   backdrop: ^0.9.0
+  wtf_sliding_sheet: ^1.1.2
 
 dev_dependencies:
   flutter_test:

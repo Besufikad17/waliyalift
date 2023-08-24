@@ -1,30 +1,36 @@
-import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
-import 'package:waliyalift/components/text.dart';
 import 'package:waliyalift/components/vehicle_picker.dart';
+import 'package:waliyalift/utils/color.dart';
+import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 
 class Vehicles extends StatelessWidget {
   const Vehicles({super.key});
   
   @override
   Widget build(BuildContext context) {
-    return BackdropScaffold(
-      appBar: BackdropAppBar(
+    return Scaffold(
+      appBar: AppBar(
         elevation: 0,
-        title: MyText(
-            text: "Pick vehicle",
-            size: 12,
-            bgcolor: "#ffffff",
-            fgcolor: "#000000",
-            isBold: true,
-            borderRadius: 0),
+        backgroundColor: getColorFromHex("#ffffff"),
+        title: const Text("Pick vehicle", style: TextStyle(fontSize: 15),),
         centerTitle: true,
       ),
-      frontLayer: const Column(children: [
-        Text("Map.."),
-        Text("Map..")
-      ],),
-      backLayer: const VehiclePicker(),
+      body: SlidingSheet(
+        elevation: 8,
+        cornerRadius: 16,
+        snapSpec: const SnapSpec(
+          snap: true,
+          snappings: [0.4, 0.7, 1.0],
+          positioning: SnapPositioning.relativeToAvailableSpace,
+        ),
+        body: const Center(
+          // TODO: google maps
+          child: Text('This widget is below the SlidingSheet'),
+        ),
+        builder: (context, state) {
+          return VehiclePicker();
+        },
+      ),
     );
   }
 }

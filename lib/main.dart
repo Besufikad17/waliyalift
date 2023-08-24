@@ -54,10 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: MyText(
           text: widget.title, 
           size: 12, 
-          bgcolor: colorToHexString(Theme.of(context).colorScheme.primary), 
-          fgcolor: "#ffffff",
+          color: "#ffffff",
           isBold: true,
-          borderRadius: 0
         ),
         centerTitle: true,
       ),

@@ -34,6 +34,7 @@ class MyCard extends StatelessWidget {
         height: height == 0 ? null : height,
         decoration: BoxDecoration(
           color: getColorFromHex(color),
+          // FIXME: border radius 
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(borderRadius.topRight),
             topLeft: Radius.circular(borderRadius.topLeft),
