@@ -9,12 +9,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  window_size:
+    git:
+      url: https://github.com/google/flutter-desktop-embedding
+      path: plugins/window_size
 
   cupertino_icons: ^1.0.2
-  intl_phone_number_input: ^0.7.3+1
   google_maps_flutter: ^2.4.0
   flutter_hooks: ^0.20.0
   hooks_riverpod: ^2.3.8
+  backdrop: ^0.9.0
 
 dev_dependencies:
   flutter_test:

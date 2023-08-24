@@ -3,9 +3,15 @@ import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
 import 'package:waliyalift/components/location_picker.dart';
 import 'package:waliyalift/components/text.dart';
+import 'package:waliyalift/models/border_radius.dart';
 import 'package:waliyalift/models/place.dart';
+import 'package:waliyalift/screens/vehicles.dart';
 import 'package:waliyalift/utils/color.dart';
 
+enum AlertFlag {
+  message,
+  error,
+}
 class Location extends StatefulWidget {
   const Location({super.key});
 
@@ -64,7 +70,7 @@ class _LocationState extends State<Location> {
           MyCard(
             width: 250,
             height: 50,
-            borderRadius: 5,
+            borderRadius: MyBorderRadius.all(radius: 5),
             onPressed: () => {
               Navigator.push(
                 context, 
@@ -104,7 +110,7 @@ class _LocationState extends State<Location> {
           MyCard(
             width: 250,
             height: 50,
-            borderRadius: 5,
+            borderRadius: MyBorderRadius.all(radius: 5),
             borderColor: borderColor,
             onPressed: () => {
              Navigator.push(
@@ -117,7 +123,7 @@ class _LocationState extends State<Location> {
               )
             },
             widget: Container(
-              padding: const EdgeInsets.all(6),
+              padding: const EdgeInsets.all(4),
               color: getColorFromHex("#ffffff"),
               child: Row(children: [
                 Expanded(
@@ -147,9 +153,36 @@ class _LocationState extends State<Location> {
               height: 40,
               borderRadius: 5,
               bgcolor: "#165214",
-              onPressed: () {})
+              onPressed: () {
+                if(pickLocation != "Pick location" && dropLocation != "Drop location") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => (const Vehicles()))
+                  );
+                }else if(pickLocation == "Pick location" || dropLocation == "Drop location") {
+                    _displayAlert(
+                      AlertFlag.error, 
+                      const Text("Please pick location"), 
+                      "Error"
+                    );
+                }
+              })
         ]),
       ),
+    );
+  }
+
+  void _displayAlert(AlertFlag flag, Widget body, String title) {
+    showDialog(
+      context: context, 
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: flag == AlertFlag.message ? 
+          Text(title) :
+          Text(title, style: const TextStyle(color: Colors.red)),
+          content: body,
+        );
+      }
     );
   }
 }

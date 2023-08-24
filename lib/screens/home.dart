@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
-import 'package:waliyalift/components/phoneno_input_field.dart';
 import 'package:waliyalift/components/text.dart';
+import 'package:waliyalift/components/text_field.dart';
+import 'package:waliyalift/models/border_radius.dart';
 import 'package:waliyalift/screens/location.dart';
 import 'package:waliyalift/utils/color.dart';
 
@@ -48,18 +49,20 @@ class _HomeState extends State<Home> {
         MyCard(
           width: 250, 
           height: 50, 
-          borderRadius: 5, 
+          borderRadius: MyBorderRadius.all(radius: 10), 
           onPressed: () => tap(1), 
           borderColor: borderColor,
           widget: Container(
             padding: const EdgeInsets.all(6),
             color: getColorFromHex("#ffffff"),
             child: Row(children: [
-               MyText(
-                text: "For me",
-                size: 12,
-                bgcolor: "#ffffff",
-                borderRadius: 0),
+               Expanded(
+                 child: MyText(
+                  text: "For me",
+                  size: 12,
+                  bgcolor: "#ffffff",
+                  borderRadius: 0),
+               ),
               const SizedBox(
                 width: 150,
               ),
@@ -75,18 +78,20 @@ class _HomeState extends State<Home> {
         MyCard(
           width: 250, 
           height: 50, 
-          borderRadius: 5,
+          borderRadius: MyBorderRadius.all(radius: 10),
           borderColor: borderColor2, 
           onPressed: () => tap(2), 
           widget: Container(
-            padding: const EdgeInsets.all(6),
+            padding: const EdgeInsets.all(4),
             color: getColorFromHex("#ffffff"),
             child: Row(children: [
-               MyText(
-                text: "For others",
-                size: 12,
-                bgcolor: "#ffffff",
-                borderRadius: 0),
+               Expanded(
+                 child: MyText(
+                  text: "For others",
+                  size: 12,
+                  bgcolor: "#ffffff",
+                  borderRadius: 0),
+               ),
               const SizedBox(
                 width: 133,
               ),
@@ -117,16 +122,24 @@ class _HomeState extends State<Home> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: const Text("Contact Information"),
+                      title: const Text("Contact Information", style: TextStyle(fontSize: 13),),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          MyPhoneNumberInputField(
+                          MyTextField(
                             textEditingController: pnoText, 
-                            onInputChanged: (pno) => {
+                            labelText: "Phone number",
+                            hintText: "Enter your phone number",
+                            onChanged: (pno) => {
                               setState((){
-                                phoneNumber = pno.phoneNumber!;
+                                phoneNumber = pno;
                               })
+                            },
+                            onSubmitted: (pno) => {
+                              setState((){
+                                phoneNumber = pno;
+                              }),
+                              Navigator.pop(context)
                             }
                           )
                         ],

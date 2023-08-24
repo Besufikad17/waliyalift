@@ -1,9 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:waliyalift/components/text.dart';
 import 'package:waliyalift/screens/home.dart';
 import 'package:waliyalift/utils/color.dart';
+import 'package:window_size/window_size.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowMaxSize(const Size(360, 800));
+    setWindowMinSize(const Size(360, 800));
+  }
+
   runApp(const MyApp());
 }
 
