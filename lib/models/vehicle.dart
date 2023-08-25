@@ -23,4 +23,9 @@ class Vehicle {
     );
   }
 
+  @override
+  String toString() {
+    return "$name $capacity $startPrice";
+  }
+
 }
