@@ -3,7 +3,6 @@ import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
 import 'package:waliyalift/components/location_picker.dart';
 import 'package:waliyalift/components/text.dart';
-import 'package:waliyalift/models/border_radius.dart';
 import 'package:waliyalift/models/place.dart';
 import 'package:waliyalift/screens/vehicles.dart';
 import 'package:waliyalift/utils/color.dart';
@@ -69,7 +68,7 @@ class _LocationState extends State<Location> {
           MyCard(
             width: 250,
             height: 50,
-            borderRadius: MyBorderRadius.all(radius: 5),
+            borderRadius: 5,
             onPressed: () => {
               Navigator.push(
                 context, 
@@ -108,7 +107,7 @@ class _LocationState extends State<Location> {
           MyCard(
             width: 250,
             height: 50,
-            borderRadius: MyBorderRadius.all(radius: 5),
+            borderRadius: 5,
             borderColor: borderColor,
             onPressed: () => {
              Navigator.push(

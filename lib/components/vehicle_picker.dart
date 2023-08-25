@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
 import 'package:waliyalift/components/text.dart';
-import 'package:waliyalift/models/border_radius.dart';
 import 'package:waliyalift/models/vehicle.dart';
 
 class VehiclePicker extends StatefulWidget {
@@ -45,7 +44,7 @@ class _VehiclePickerState extends State<VehiclePicker> {
                   width: 300,
                   height: 50,
                   borderColor: selectedIndex != null ? (vehicles.indexOf(v) == selectedIndex ? "#165214" : "#000000") : "#000000",
-                  borderRadius: MyBorderRadius.all(radius: 5), 
+                  borderRadius: 5, 
                   onPressed: (){
                     pick(v);
                   }, 

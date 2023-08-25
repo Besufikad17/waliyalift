@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:waliyalift/models/border_radius.dart';
 import 'package:waliyalift/utils/color.dart';
 
 // ignore: must_be_immutable
@@ -17,7 +16,7 @@ class MyCard extends StatelessWidget {
 
   double width;
   double height;
-  final MyBorderRadius borderRadius;
+  final double borderRadius;
   final VoidCallback onPressed;
   final Widget widget;
   String borderColor;
@@ -34,13 +33,7 @@ class MyCard extends StatelessWidget {
         height: height == 0 ? null : height,
         decoration: BoxDecoration(
           color: getColorFromHex(color),
-          // FIXME: border radius 
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(borderRadius.topRight),
-            topLeft: Radius.circular(borderRadius.topLeft),
-            bottomLeft: Radius.circular(borderRadius.bottomLeft),
-            bottomRight: Radius.circular(borderRadius.bottomRight),
-          )
+          borderRadius: BorderRadius.circular(borderRadius)
         ),
         child: Card(
           shape: RoundedRectangleBorder(
@@ -48,7 +41,7 @@ class MyCard extends StatelessWidget {
               color: getColorFromHex(borderColor),
               width: borderColor != "#000000" ? 2 : 1,
             ),           
-            // borderRadius: BorderRadius.circular(borderRadius)
+            borderRadius: BorderRadius.circular(borderRadius)
           ),
           child: widget,
         )

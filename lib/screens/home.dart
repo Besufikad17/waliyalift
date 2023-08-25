@@ -3,7 +3,6 @@ import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
 import 'package:waliyalift/components/text.dart';
 import 'package:waliyalift/components/text_field.dart';
-import 'package:waliyalift/models/border_radius.dart';
 import 'package:waliyalift/screens/location.dart';
 import 'package:waliyalift/utils/color.dart';
 
@@ -47,9 +46,9 @@ class _HomeState extends State<Home> {
         ),
         const SizedBox(height: 10,),
         MyCard(
-          width: 250, 
+          width: 250,
           height: 50, 
-          borderRadius: MyBorderRadius.all(radius: 10), 
+          borderRadius: 5, 
           onPressed: () => tap(1), 
           borderColor: borderColor,
           widget: Container(
@@ -77,7 +76,7 @@ class _HomeState extends State<Home> {
         MyCard(
           width: 250, 
           height: 50, 
-          borderRadius: MyBorderRadius.all(radius: 10),
+          borderRadius: 5,
           borderColor: borderColor2, 
           onPressed: () => tap(2), 
           widget: Container(
@@ -91,7 +90,7 @@ class _HomeState extends State<Home> {
                  ),
                ),
               const SizedBox(
-                width: 133,
+                width: 130,
               ),
               Image.asset(
                 "assets/images/member.png",
