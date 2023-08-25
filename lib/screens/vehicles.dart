@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:waliyalift/bloc/vehicle_bloc.dart';
 import 'package:waliyalift/components/vehicle_picker.dart';
+import 'package:waliyalift/models/vehicle.dart';
+import 'package:waliyalift/repository/vehicle_repository.dart';
 import 'package:waliyalift/utils/color.dart';
 import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 
 class Vehicles extends StatelessWidget {
-  const Vehicles({super.key});
+  Vehicles({super.key});
+
+  final VehicleRepository _vehicleRepository = VehicleRepository();
   
   @override
   Widget build(BuildContext context) {
@@ -15,7 +21,39 @@ class Vehicles extends StatelessWidget {
         title: const Text("Pick vehicle", style: TextStyle(fontSize: 15),),
         centerTitle: true,
       ),
-      body: SlidingSheet(
+      body: BlocProvider(
+        create: (context) => VehicleBloc(_vehicleRepository)..add(const GetVehicles()),
+        child: BlocConsumer<VehicleBloc, VehicleState>(
+          listener: (context, state) => {},
+          builder: (BuildContext context, VehicleState state) {
+            if(state is VehicleInitial) {
+              return _buildLoading();
+            }else if(state is VehiclesLoaded) {
+              return _loadVehicles(state.vehicles);
+            }else if(state is VehicleError) {
+              return _loadError(state.message);
+            }
+            return Container();
+          },
+        ),
+      )
+    );
+  }
+
+  Widget _buildLoading() {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  Widget _loadError(String message) {
+     return Center(
+      child: Text(message),
+    );
+  }
+
+  Widget _loadVehicles(List<Vehicle> vehicles) {
+    return SlidingSheet(
         elevation: 8,
         cornerRadius: 16,
         snapSpec: const SnapSpec(
@@ -28,9 +66,8 @@ class Vehicles extends StatelessWidget {
           child: Text('This widget is below the SlidingSheet'),
         ),
         builder: (context, state) {
-          return VehiclePicker();
+          return VehiclePicker(vehicles: vehicles,);
         },
-      ),
-    );
+      );
   }
 }

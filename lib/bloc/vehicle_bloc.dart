@@ -11,8 +11,12 @@ class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
 
   VehicleBloc(this._vehicleRepository) : super(const VehicleInitial()) {
     on<GetVehicles>((event, emit) async {
-      final vehicles = await _vehicleRepository.fetchVehicles();
-      emit(VehiclesLoaded(vehicles));
+     try {
+        final vehicles = await _vehicleRepository.fetchVehicles();
+        emit(VehiclesLoaded(vehicles));
+     } catch (e) {
+        emit(VehicleError(e.toString()));
+     }
     });
   }
 }

@@ -153,7 +153,7 @@ class _LocationState extends State<Location> {
                 if(pickLocation != "Pick location" && dropLocation != "Drop location") {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => (const Vehicles()))
+                    MaterialPageRoute(builder: (context) => (Vehicles()))
                   );
                 }else if(pickLocation == "Pick location" || dropLocation == "Drop location") {
                     _displayAlert(

@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:waliyalift/utils/exceptions.dart';
+
 class VehicleRepository {
   Future<List<Vehicle>> fetchVehicles() async {
     List<Vehicle> vehicles = [];
@@ -15,7 +17,7 @@ class VehicleRepository {
         vehicles.add(Vehicle.fromJSON(element));
       }
     } else {
-      throw Exception('Failed to load Vehicles');
+      throw CannotLoadVehiclesException('Failed to load Vehicles');
     }
 
     return vehicles;

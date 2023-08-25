@@ -18,3 +18,11 @@ final class VehiclesLoaded extends VehicleState {
   @override
   List<Object?> get props => [vehicles];
 }
+
+final class VehicleError extends VehicleState {
+  final String message;
+  const VehicleError(this.message);
+  
+  @override
+  List<Object?> get props => [message];
+}
