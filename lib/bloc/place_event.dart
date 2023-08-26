@@ -10,3 +10,11 @@ class GetPlaces extends PlaceEvent {
   @override
   List<Object?> get props => [];
 }
+
+class UpdatePlaces extends PlaceEvent {
+  List<Place> newPlaces;
+  UpdatePlaces(this.newPlaces);
+
+  @override
+  List<Object?> get props => [newPlaces];
+}

@@ -27,14 +27,14 @@ class _LocationState extends State<Location> {
           Place(id: "1", country: "Ethiopia", city: "Addis Ababa", zone: "2", street: "Megenagna", title: "Metebaber blg", lat: "12.33", lng: "36.34")
   ];
 
-  void pick(location, flag) {
+  void pick(Place location, flag) {
     if (flag == "pick") {
         setState(() {
-          pickLocation = location;
+          pickLocation = location.toString();
         });
     }else {
         setState(() {
-          dropLocation = location;
+          dropLocation = location.toString();
         });
     }
   }
@@ -73,9 +73,8 @@ class _LocationState extends State<Location> {
               Navigator.push(
                 context, 
                 MaterialPageRoute(builder: (context) => LocationPicker(
-                  places: places,
                   flag: "pick",
-                  onPressed: (location, flag) => pick(location, "pick"),
+                  onPressed: (Place location, flag) => pick(location, "pick"),
                 ))
               )
             },
@@ -113,9 +112,8 @@ class _LocationState extends State<Location> {
              Navigator.push(
                 context, 
                 MaterialPageRoute(builder: (context) => LocationPicker(
-                  places: places,
                   flag: "drop",
-                  onPressed: (location, flag) => pick(location, "drop"),
+                  onPressed: (Place location, flag) => pick(location, "drop"),
                 ))
               )
             },

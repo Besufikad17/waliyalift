@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waliyalift/bloc/vehicle_bloc.dart';
+import 'package:waliyalift/components/circular_progress.dart';
 import 'package:waliyalift/components/vehicle_picker.dart';
 import 'package:waliyalift/models/vehicle.dart';
 import 'package:waliyalift/repository/vehicle_repository.dart';
@@ -27,7 +28,7 @@ class Vehicles extends StatelessWidget {
           listener: (context, state) => {},
           builder: (BuildContext context, VehicleState state) {
             if(state is VehicleInitial) {
-              return _buildLoading();
+              return const MyCircularProgressBar();
             }else if(state is VehiclesLoaded) {
               return _loadVehicles(state.vehicles);
             }else if(state is VehicleError) {
@@ -37,12 +38,6 @@ class Vehicles extends StatelessWidget {
           },
         ),
       )
-    );
-  }
-
-  Widget _buildLoading() {
-    return const Center(
-      child: CircularProgressIndicator(),
     );
   }
 

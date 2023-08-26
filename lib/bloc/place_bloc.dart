@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/rendering.dart';
 import 'package:waliyalift/models/place.dart';
 import 'package:waliyalift/repository/place_repository.dart';
 
@@ -19,5 +18,12 @@ class PlaceBloc extends Bloc<PlaceEvent, PlaceState> {
         emit(PlaceError(e.toString()));
       }
     });
+
+    on<UpdatePlaces>((event, emit) async {
+      emit(const PlaceInitial());
+      final places = event.newPlaces;
+      emit(PlacesLoaded(places));
+    });
+
   }
 }
