@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waliyalift/bloc/vehicle_bloc.dart';
 import 'package:waliyalift/components/circular_progress.dart';
+import 'package:waliyalift/components/map.dart';
 import 'package:waliyalift/components/vehicle_picker.dart';
+import 'package:waliyalift/models/place.dart';
 import 'package:waliyalift/models/vehicle.dart';
 import 'package:waliyalift/repository/vehicle_repository.dart';
 import 'package:waliyalift/utils/color.dart';
 import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 
 class Vehicles extends StatelessWidget {
-  Vehicles({super.key});
+  Vehicles({super.key, required this.src, required this.dest});
 
   final VehicleRepository _vehicleRepository = VehicleRepository();
+  final Place src;
+  final Place dest;
   
   @override
   Widget build(BuildContext context) {
@@ -56,9 +60,9 @@ class Vehicles extends StatelessWidget {
           snappings: [0.4, 0.7, 1.0],
           positioning: SnapPositioning.relativeToAvailableSpace,
         ),
-        body: const Center(
-          // TODO: google maps
-          child: Text('This widget is below the SlidingSheet'),
+        body: MyMap(
+          src: src,
+          dest: dest,
         ),
         builder: (context, state) {
           return VehiclePicker(vehicles: vehicles,);

@@ -22,19 +22,19 @@ class _LocationState extends State<Location> {
   String borderColor = "#000000";
   String pickLocation = "Pick location";
   String dropLocation = "Drop location";
-  List<Place> places = [
-     Place(id: "1", country: "Ethiopia", city: "Addis Ababa", zone: "1", street: "Asmera road", title: "KMU", lat: "12.33", lng: "34.34"),
-          Place(id: "1", country: "Ethiopia", city: "Addis Ababa", zone: "2", street: "Megenagna", title: "Metebaber blg", lat: "12.33", lng: "36.34")
-  ];
+  late Place src;
+  late Place dest;
 
   void pick(Place location, flag) {
     if (flag == "pick") {
         setState(() {
           pickLocation = location.toString();
+          src = location;
         });
     }else {
         setState(() {
           dropLocation = location.toString();
+          dest = location;
         });
     }
   }
@@ -151,7 +151,7 @@ class _LocationState extends State<Location> {
                 if(pickLocation != "Pick location" && dropLocation != "Drop location") {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => (Vehicles()))
+                    MaterialPageRoute(builder: (context) => (Vehicles(src: src, dest: dest,)))
                   );
                 }else if(pickLocation == "Pick location" || dropLocation == "Drop location") {
                     _displayAlert(

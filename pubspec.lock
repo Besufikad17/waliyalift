@@ -126,6 +126,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.15"
+  flutter_polyline_points:
+    dependency: "direct main"
+    description:
+      name: flutter_polyline_points
+      sha256: "0e07862139cb65a88789cd6efbe284c0b6f1fcb5ed5ec87781759c48190d84b9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -161,13 +169,13 @@ packages:
     source: hosted
     version: "2.4.0"
   google_maps_flutter_android:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_maps_flutter_android
-      sha256: fb3e52f94d0736f6ee8bcdef290f8eab9325376d676f61303347c10ccf15379c
+      sha256: "0a3db57610487c5dc133b28b8025933148bacc007d0af500ec66e1ecdf304b96"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.16"
+    version: "2.5.0"
   google_maps_flutter_ios:
     dependency: transitive
     description:
@@ -177,7 +185,7 @@ packages:
     source: hosted
     version: "2.2.3"
   google_maps_flutter_platform_interface:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_maps_flutter_platform_interface
       sha256: b363e9a1ef7d063fb21ec8eef5a450db4b0500cc39712c9410b5cc64013d6fc6
