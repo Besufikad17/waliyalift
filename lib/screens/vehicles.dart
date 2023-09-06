@@ -65,7 +65,7 @@ class Vehicles extends StatelessWidget {
           dest: dest,
         ),
         builder: (context, state) {
-          return VehiclePicker(vehicles: vehicles,);
+          return VehiclePicker(vehicles: vehicles, src: src, dest: dest,);
         },
       );
   }

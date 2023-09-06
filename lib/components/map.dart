@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_widget/google_maps_widget.dart';
 import 'package:waliyalift/models/place.dart';
 
 class MyMap extends StatefulWidget {
@@ -45,7 +46,7 @@ class _MyMapState extends State<MyMap> {
 
   @override
   void initState(){
-    getPolyPoints();
+    // getPolyPoints();
     super.initState();
   }
   
@@ -54,24 +55,41 @@ class _MyMapState extends State<MyMap> {
     LatLng srcLocation = LatLng(double.parse(src.lat!), double.parse(src.lng!));
     LatLng destLocation = LatLng(double.parse(dest.lat!), double.parse(dest.lng!));
 
-    return GoogleMap(
-      initialCameraPosition: CameraPosition(target: srcLocation, zoom: 13.5),
-      polylines: {
-        Polyline(
-          polylineId: const PolylineId("route"),
-          points: polylineCoordinates
-        )
+    return GoogleMapsWidget(
+      compassEnabled: true,
+      indoorViewEnabled: true,
+      buildingsEnabled: true,
+      apiKey: googleApiKey,
+      sourceLatLng: srcLocation,
+      destinationLatLng: destLocation,
+      defaultCameraZoom: 12,
+      routeWidth: 4,
+      routeColor: Colors.black,
+      totalTimeCallback: (time) => {
+        print(time)
       },
-      markers: {
-        Marker(
-          markerId: const MarkerId("src"),
-          position: srcLocation
-        ),
-        Marker(
-          markerId: const MarkerId("dest"),
-          position: destLocation
-        )
+      totalDistanceCallback: (distance) => {
+        print(distance)
       },
     );
+    // return GoogleMap(
+    //   initialCameraPosition: CameraPosition(target: srcLocation, zoom: 13.5),
+    //   polylines: {
+    //     Polyline(
+    //       polylineId: const PolylineId("route"),
+    //       points: polylineCoordinates
+    //     )
+    //   },
+    //   markers: {
+    //     Marker(
+    //       markerId: const MarkerId("src"),
+    //       position: srcLocation
+    //     ),
+    //     Marker(
+    //       markerId: const MarkerId("dest"),
+    //       position: destLocation
+    //     )
+    //   },
+    // );
   }
 }

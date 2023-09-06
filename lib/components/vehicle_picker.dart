@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:waliyalift/components/alert.dart';
 import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
 import 'package:waliyalift/components/text.dart';
+import 'package:waliyalift/models/place.dart';
 import 'package:waliyalift/models/vehicle.dart';
+import 'package:waliyalift/screens/checkout.dart';
 
 class VehiclePicker extends StatefulWidget {
-  const VehiclePicker({super.key, required this.vehicles});
+  const VehiclePicker({super.key, required this.vehicles, required this.src, required this.dest});
 
   final List<Vehicle> vehicles;
+  final Place src;
+  final Place dest;
 
   @override
-  State<VehiclePicker> createState() => _VehiclePickerState(vehicles: vehicles);
+  State<VehiclePicker> createState() => _VehiclePickerState(vehicles: vehicles, src: src, dest: dest);
 }
 
 class _VehiclePickerState extends State<VehiclePicker> {
   final List<Vehicle> vehicles;
-  late Vehicle vehicle;
+  final Place src;
+  final Place dest;
+  Vehicle? vehicle;
   int? selectedIndex;
 
-  _VehiclePickerState({required this.vehicles});
+  _VehiclePickerState({required this.src, required this.dest, required this.vehicles});
   
   void pick(Vehicle newVehicle) {
     setState(() {
@@ -88,12 +95,28 @@ class _VehiclePickerState extends State<VehiclePicker> {
             bgcolor: "#165214", 
             borderRadius: 5,
             onPressed: () {
-              // TODO: Navigate to checkout page
+             if(vehicle != null) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CheckoutPage(src: src, dest: dest, vehicle: vehicle!,)) 
+              );
+             }else {
+              _displayAlert(AlertType.error, const Text("Please select vehicle type"), "Error");
+             }
             }
           ),
           const SizedBox(height: 20,),
         ],
       ),
+    );
+  }
+
+  void _displayAlert(AlertType type, Widget body, String title) {
+    showDialog(
+      context: context, 
+      builder: (BuildContext context) {
+        return MyAlert(title: title, type: type, body: body);
+      }
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waliyalift/components/alert.dart';
 import 'package:waliyalift/components/button.dart';
 import 'package:waliyalift/components/card.dart';
 import 'package:waliyalift/components/location_picker.dart';
@@ -7,10 +8,7 @@ import 'package:waliyalift/models/place.dart';
 import 'package:waliyalift/screens/vehicles.dart';
 import 'package:waliyalift/utils/color.dart';
 
-enum AlertFlag {
-  message,
-  error,
-}
+
 class Location extends StatefulWidget {
   const Location({super.key});
 
@@ -155,7 +153,7 @@ class _LocationState extends State<Location> {
                   );
                 }else if(pickLocation == "Pick location" || dropLocation == "Drop location") {
                     _displayAlert(
-                      AlertFlag.error, 
+                      AlertType.error, 
                       const Text("Please pick location"), 
                       "Error"
                     );
@@ -166,16 +164,11 @@ class _LocationState extends State<Location> {
     );
   }
 
-  void _displayAlert(AlertFlag flag, Widget body, String title) {
+  void _displayAlert(AlertType type, Widget body, String title) {
     showDialog(
       context: context, 
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: flag == AlertFlag.message ? 
-          Text(title) :
-          Text(title, style: const TextStyle(color: Colors.red)),
-          content: body,
-        );
+        return MyAlert(title: title, type: type, body: body);
       }
     );
   }

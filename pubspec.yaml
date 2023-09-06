@@ -27,6 +27,7 @@ dependencies:
   google_maps_flutter_platform_interface: ^2.4.0
   google_maps_flutter_android: ^2.5.0
   flutter_polyline_points: ^2.0.0
+  google_maps_widget: ^1.0.5+1
 
 dev_dependencies:
   flutter_test:
