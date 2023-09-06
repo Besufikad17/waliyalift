@@ -9,14 +9,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  backdrop:
-    dependency: "direct main"
-    description:
-      name: backdrop
-      sha256: "8d1de2db4aca3821bad670c092e3a050bf15aa1dd05ded4d14fdf0a0ae5da9dc"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.9.0"
   bloc:
     dependency: "direct main"
     description:

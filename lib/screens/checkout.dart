@@ -56,7 +56,7 @@ class CheckoutPage extends StatelessWidget {
                   const Center(
                     child: Text("Checkout"),
                   ),
-                  const SizedBox(height: 30,),
+                  const SizedBox(height: 50,),
                   Row(
                     children: [
                       const SizedBox(width: 30,),

@@ -21,7 +21,7 @@ class MyText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(text,
-      // overflow: TextOverflow.ellipsis,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: size,
         fontWeight: isBold ? FontWeight.w600 : FontWeight.normal,

@@ -18,7 +18,6 @@ dependencies:
   google_maps_flutter: ^2.4.0
   flutter_hooks: ^0.20.0
   hooks_riverpod: ^2.3.8
-  backdrop: ^0.9.0
   wtf_sliding_sheet: ^1.1.2
   bloc: ^8.1.2
   flutter_bloc: ^8.1.3
