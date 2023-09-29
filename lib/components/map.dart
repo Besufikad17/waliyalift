@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_widget/google_maps_widget.dart';
 import 'package:waliyalift/models/place.dart';
 
@@ -20,7 +17,6 @@ class _MyMapState extends State<MyMap> {
   final Place src;
   final Place dest;
   
-  final Completer<GoogleMapController> _controller = Completer();
   _MyMapState({required this.src, required this.dest});
 
   List<LatLng> polylineCoordinates = [];
@@ -72,24 +68,5 @@ class _MyMapState extends State<MyMap> {
         print(distance)
       },
     );
-    // return GoogleMap(
-    //   initialCameraPosition: CameraPosition(target: srcLocation, zoom: 13.5),
-    //   polylines: {
-    //     Polyline(
-    //       polylineId: const PolylineId("route"),
-    //       points: polylineCoordinates
-    //     )
-    //   },
-    //   markers: {
-    //     Marker(
-    //       markerId: const MarkerId("src"),
-    //       position: srcLocation
-    //     ),
-    //     Marker(
-    //       markerId: const MarkerId("dest"),
-    //       position: destLocation
-    //     )
-    //   },
-    // );
   }
 }
