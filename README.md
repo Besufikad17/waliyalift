@@ -24,6 +24,12 @@ You can download and install the app from the [release](https://github.com/Besuf
     flutter pub get && 
     flutter run
 ```
+- After clonning the repo get your api key from [Google developers console](https://console.cloud.google.com/) and put it in `AndroidManifest.xml` file.
+
+```xml
+     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR API KEY"/>
+```
+
 
 ## preview
 
